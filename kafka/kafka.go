@@ -136,8 +136,9 @@ func (kMQ *kfkMQ) Publish(topic string, msg *mq.Message, opts ...mq.PublishOptio
 	return err
 }
 
-func (kMQ *kfkMQ) Subscribe(topic, group string, h mq.Handler) (mq.Subscriber, error) {
-	return kMQ.subscribe(topic, h, mq.Queue(group))
+// Subscribe name is that of consumer group
+func (kMQ *kfkMQ) Subscribe(topic, name string, h mq.Handler) (mq.Subscriber, error) {
+	return kMQ.subscribe(topic, h, mq.Queue(name))
 }
 
 // Subscribe to kafka message topic, each subscription generates a kafka groupConsumer group.

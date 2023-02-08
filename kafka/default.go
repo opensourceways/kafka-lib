@@ -22,8 +22,8 @@ func Publish(topic string, msg *mq.Message, opts ...mq.PublishOption) error {
 	return DefaultMQ.Publish(topic, msg, opts...)
 }
 
-func Subscribe(topic, group string, handler mq.Handler) (mq.Subscriber, error) {
-	return DefaultMQ.Subscribe(topic, group, handler)
+func Subscribe(topic, name string, handler mq.Handler) (mq.Subscriber, error) {
+	return DefaultMQ.Subscribe(topic, name, handler)
 }
 
 func String() string {
